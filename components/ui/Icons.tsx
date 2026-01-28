@@ -118,3 +118,15 @@ export const JiraIcon: React.FC<IconProps> = ({ className="h-5 w-5" }) => (
     <path d="M11.53 2c0-1.056.815-1.923 1.848-2H14c5.523 0 10 4.477 10 10v.622c-.077 1.033-.944 1.848-2 1.848s-1.923-.815-2-1.848V10a6 6 0 0 0-6-6h-.622c-1.033-.077-1.848-.944-1.848-2zM2 11.53c-1.056 0-1.923.815-2 1.848V14c0 5.523 4.477 10 10 10h.622c1.033-.077 1.848-.944 1.848-2s-.815-1.923-1.848-2H10a6 6 0 0 1-6-6v-.622c-.077-1.033-.944-1.848-2-1.848z"/>
   </svg>
 );
+
+export const MenuIcon: React.FC<IconProps> = ({ className = "h-6 w-6" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+  </svg>
+);
+
+export const XMarkIcon: React.FC<IconProps> = ({ className = "h-6 w-6" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);

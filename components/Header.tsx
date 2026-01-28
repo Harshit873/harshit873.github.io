@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NAV_LINKS, RESUME_URL } from '../constants';
-import { DocumentTextIcon } from './ui/Icons';
+import { DocumentTextIcon, MenuIcon, XMarkIcon } from './ui/Icons';
 import { motion } from 'framer-motion';
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +29,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         >
           HS<span className="text-[#00F5D4] opacity-0 group-hover:opacity-100 transition-opacity">.</span>
         </button>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-3 md:gap-8">
+          {/* Desktop navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {NAV_LINKS.map((link) => {
               const pageId = link.href.substring(1);
@@ -54,8 +56,53 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <DocumentTextIcon className="h-4 w-4"/>
             Resume
           </a>
+          {/* Mobile hamburger button */}
+          <button
+            type="button"
+            className="inline-flex items-center justify-center md:hidden rounded-full border border-white/10 p-2 text-[#F1F1F1] hover:bg-white/5 transition-colors"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            {isMobileMenuOpen ? <XMarkIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile nav menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-[#050505]/95 backdrop-blur-xl border-t border-[rgba(255,255,255,0.05)]">
+          <div className="container mx-auto px-6 py-4 space-y-2">
+            {NAV_LINKS.map((link) => {
+              const pageId = link.href.substring(1);
+              const isActive = currentPage === pageId;
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    setCurrentPage(pageId);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    isActive ? 'bg-[#00F5D4]/10 text-[#F1F1F1]' : 'text-[#BDBDBD] hover:bg-white/5 hover:text-[#00F5D4]'
+                  }`}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-[#00F5D4] border border-[#00F5D4]/40 rounded-lg hover:bg-[#00F5D4]/10 hover:border-[#00F5D4] transition-all"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <DocumentTextIcon className="h-4 w-4" />
+              Resume
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
