@@ -15,7 +15,9 @@ import {
   JiraIcon
 } from './components/ui/Icons.tsx';
 
-export const RESUME_URL = '/dist/assets/Harshit_shah_Resume.pdf';
+// In production the app is served from the built dist root,
+// so static assets are available under /assets, not /dist/assets.
+export const RESUME_URL = '/assets/Harshit_shah_Resume.pdf';
 
 export const NAV_LINKS = [
   { name: 'About', href: '#about' },
