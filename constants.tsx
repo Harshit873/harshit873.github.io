@@ -15,7 +15,7 @@ import {
   JiraIcon
 } from './components/ui/Icons.tsx';
 
-export const RESUME_URL = '/dist/assets/Harshit_Shah_Resume.pdf';
+export const RESUME_URL = '/dist/assets/Harshit_shah_Resume.pdf';
 
 export const NAV_LINKS = [
   { name: 'About', href: '#about' },

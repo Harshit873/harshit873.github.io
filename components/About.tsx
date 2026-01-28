@@ -90,7 +90,7 @@ const About: React.FC = () => {
             <div className="absolute inset-0 bg-[#00F5D4]/10 rounded-3xl blur-2xl group-hover:bg-[#00F5D4]/20 transition-all duration-700"></div>
             <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10 z-10">
               <img 
-                src="/dist/assets/profile-img.jpeg" 
+                src="dist/assets/profile-img.jpeg" 
                 alt="Harshit Shah" 
                 className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-105 group-hover:scale-100"
               />
